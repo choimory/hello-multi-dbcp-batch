@@ -24,7 +24,8 @@ import javax.sql.DataSource;
 
 @Configuration
 //yml의 spring.jpa 설정들을 편하게 사용하기 위한 어노테이션으로, JpaProperties 클래스를 열어보면 @ConfigurationProperties(prefix = "spring.jpa")가 붙어있음
-//별도의 설정을 사용하길 원할시 @ConfigurationProperties(prefex = "원하는 설정명")
+//해당클래스 내 모든 JpaProperties 매개변수에 spring.jpa 관련 설정값들이 JpaProperties 클래스에 매핑되어 건내짐
+//별도의 설정을 사용하길 원할시 메소드나 클래스에 @ConfigurationProperties(prefix = "원하는 설정명")
 @EnableConfigurationProperties(JpaProperties.class)
 //반드시 설정해주어야 하는 어노테이션
 @EnableJpaRepositories(basePackages = MainDataSourceConfig.PACKAGE, entityManagerFactoryRef = MainDataSourceConfig.ENTITY_MANAGER, transactionManagerRef = MainDataSourceConfig.TRANSACTION_MANAGER)
@@ -59,7 +60,7 @@ public class MainDataSourceConfig {
     @Bean(JPA_VENDOR_ADAPTER)
     //spring.jpa 관련 설정들
     //show sql과 generate ddl을 굳이 set 안하고 그냥 인스턴스만 넘겨도 자동으로 적용되던데 이유는 모르겠음
-    //yml에 data source 별로 설정을 다르게 작성하는법을 모르겠음. JpaProperties의 prefix가 정해져있어서 set할때 하드코딩 하는것 아니면 일괄 적용됨..
+    //yml에 data source 별로 설정을 다르게 작성하는법을 모르겠음. JpaProperties의 prefix가 정해져있어서 set할때 하드코딩 하는것 아니면 일괄 적용됨
     public JpaVendorAdapter jpaVendorAdapter(JpaProperties jpaProperties){
         AbstractJpaVendorAdapter jpaAdapter = new HibernateJpaVendorAdapter();
         jpaAdapter.setShowSql(jpaProperties.isShowSql());
