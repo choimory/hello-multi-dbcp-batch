@@ -1,4 +1,5 @@
 spring:
+  profiles: local
   jpa:
     open-in-view: true
     show-sql: true

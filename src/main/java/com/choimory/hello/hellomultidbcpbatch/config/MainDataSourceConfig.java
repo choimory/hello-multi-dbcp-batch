@@ -25,7 +25,7 @@ import javax.sql.DataSource;
 @Configuration
 //yml의 spring.jpa 설정들을 편하게 사용하기 위한 어노테이션으로, JpaProperties 클래스를 열어보면 @ConfigurationProperties(prefix = "spring.jpa")가 붙어있음
 //해당클래스 내 모든 JpaProperties 매개변수에 spring.jpa 관련 설정값들이 JpaProperties 클래스에 매핑되어 건내짐
-//별도의 설정을 사용하길 원할시 메소드나 클래스에 @ConfigurationProperties(prefix = "원하는 설정명")
+//별도의 설정을 사용하길 원할시, 메소드나 클래스에 @ConfigurationProperties(prefix = "원하는 설정명")
 @EnableConfigurationProperties(JpaProperties.class)
 //반드시 설정해주어야 하는 어노테이션
 @EnableJpaRepositories(basePackages = MainDataSourceConfig.PACKAGE, entityManagerFactoryRef = MainDataSourceConfig.ENTITY_MANAGER, transactionManagerRef = MainDataSourceConfig.TRANSACTION_MANAGER)
