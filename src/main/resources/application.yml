@@ -1,3 +1,4 @@
+---
 spring:
   profiles: local
   jpa:
@@ -25,6 +26,37 @@ spring:
       url: jdbc:h2:mem:first-sub;
       username: 123
       password: 123
+      hikari:
+        pool-name: first-sub-pool
+        maximum-pool-size: 5
+---
+spring:
+  profiles: test
+  jpa:
+    open-in-view: true
+    show-sql: false
+    generate-ddl: false
+    # 이하 아직 적용 못시킨 항목
+    # hibernate:
+    #   ddl-auto: none
+    # properties:
+    #   hibernate:
+    #     show_sql: true
+    #     fomrat_sql: true
+  datasource:
+    main:
+      driver-class-name: org.h2.Driver
+      url: jdbc:h2:mem:main;
+      username: asdf
+      password: asdf
+      hikari:
+        pool-name: main-pool
+        maximum-pool-size: 5
+    first-sub:
+      driver-class-name: org.h2.Driver
+      url: jdbc:h2:mem:first-sub;
+      username: 1234
+      password: 1234
       hikari:
         pool-name: first-sub-pool
         maximum-pool-size: 5
