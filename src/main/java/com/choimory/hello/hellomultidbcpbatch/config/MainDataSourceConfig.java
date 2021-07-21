@@ -38,7 +38,7 @@ public class MainDataSourceConfig {
     public static final String DATA_SOURCE_PROPERTIES = "mainDataSourceProperties";
     public static final String JPA_VENDOR_ADAPTER = "mainJpaVendorAdapter";
 
-    @Primary //복수개의 DBCP 사용시, 최소 하나의 빈에는 Primary가 적용되어 있어야 함
+    @Primary //복수개의 DBCP 사용시, 최소 하나의 빈에는 Primary가 적용되어 있어야 함. 배치 메타테이블은 Primary가 적용된 스키마에만 존재하면 됨
     @Bean(DATA_SOURCE_PROPERTIES)
     @ConfigurationProperties(prefix = "spring.datasource.main") //어떤 설정을 가져올지 - 여기선 main datasource의 기본 설정들
     //prefix 하위에 작성된 DataSource의 기본 설정들을 땡겨옴
